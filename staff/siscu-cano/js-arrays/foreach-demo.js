@@ -28,4 +28,44 @@ forEach(numsForEach, function(value) {
     console.log(value * 10);
 })
 
+//----------------------------------------------------------------------------------------------------
+
+console.log(`${iconSection} 4.) Should fail on argument null as array: forEach(null, console.log)`);
+
+try {
+    forEach(null, console.log)
+} catch (error) {
+    console.error(error)
+}
+
+//----------------------------------------------------------------------------------------------------
+
+console.log(`${iconSection} 5.) Should fail on argument 1 as array: forEach(1, console.log)`);
+
+try {
+    forEach(1, console.log)
+} catch (error) {
+    console.error(error)
+}
+
+//----------------------------------------------------------------------------------------------------
+
+console.log(`${iconSection} 6.) Should fail on argument true as array: forEach(true, console.log)`);
+
+try {
+    forEach(true, console.log)
+} catch (error) {
+    console.error(error)
+}
+
+//----------------------------------------------------------------------------------------------------
+
+console.log(`${iconSection} 7.) Should fail on argument undefined as a function: forEach([1, 2, 3])`);
+
+try {
+    forEach([1, 2, 3])
+} catch (error) {
+    console.error(error)
+}
+
 console.groupEnd();
