@@ -59,3 +59,11 @@ Caray.prototype.map = function(callback) {
 
     return result;
 }
+
+Caray.prototype.some = function(callback, thisArg) {
+    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function')
+    for (var i = 0; i < this.length; i++) {
+        if (callback.call(thisArg, this[i], i, this)) return true;
+    }
+    return false;
+}
