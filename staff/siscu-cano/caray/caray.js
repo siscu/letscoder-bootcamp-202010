@@ -100,3 +100,13 @@ Caray.prototype.reduce = function(callback, initialValue) {
     }
     return accumulator;
 }
+
+Caray.prototype.reverse = function() {
+    var aux = "";
+    for (var i = 0; i < this.length / 2; i++) {
+        aux = this[i];
+        this[i] = this[this.length - (i + 1)];
+        this[this.length - (i + 1)] = aux;
+    }
+    return this;
+}
