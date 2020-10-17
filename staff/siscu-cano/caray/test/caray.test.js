@@ -6,9 +6,9 @@ console.group(`${iconTesting} Testing ---> Caray (constructor):`);
     var explanation = 'should create a Caray of length 10 when it receives only that argument (Test 1)';
     var reason1 = 'should length be 10';
     var reason2 = 'should all items to be undefined';
-    var c = new Caray(10);
     var conditionTest1 = false;
     var conditionTest2 = false;
+    var c = new Caray(10);
 
     console.log(`%c - ${explanation}`, 'color: grey');
 
@@ -31,12 +31,12 @@ console.group(`${iconTesting} Testing ---> Caray (constructor):`);
 //----------------------------------------------------------------------------------------------------
 (function() {
     var explanation = 'should fail when it receives only one numeric non-integer argument (Test 2)';
-    var conditionTest1 = false;
-    var conditionTest2 = false;
-    var conditionTest3 = false;
     var reason1 = 'should _error be defined';
     var reason2 = 'should error be an instance of RangeError';
     var reason3 = 'should error message match';
+    var conditionTest1 = false;
+    var conditionTest2 = false;
+    var conditionTest3 = false;
     var _error;
 
     console.log(`%c - ${explanation}`, 'color: grey');
@@ -69,10 +69,10 @@ console.group(`${iconTesting} Testing ---> Caray (constructor):`);
 //----------------------------------------------------------------------------------------------------
 (function() {
     var explanation = 'should create a Caray of length 1 when it receives only one argument non-numeric and non-integer (Test 3)';
-    var conditionTest1 = false;
-    var conditionTest2 = false;
     var reason1 = 'should length be 1';
     var reason2 = 'should first item match';
+    var conditionTest1 = false;
+    var conditionTest2 = false;
     var value = ['hello world', true, null, undefined, { hello: 'world' },
         ['hello', 'world']
     ].random();
@@ -97,8 +97,8 @@ console.group(`${iconTesting} Testing ---> Caray (constructor):`);
 //----------------------------------------------------------------------------------------------------
 (function() {
     var explanation = 'should create a Caray with as many elements as arguments we receive (Test 4)';
-    var conditionTest1 = false;
     var reason1 = 'should length be 4';
+    var conditionTest1 = false;
     var c = new Caray('a', 5, 500, 'b');
 
     console.log(`%c - ${explanation}`, 'color: grey');
