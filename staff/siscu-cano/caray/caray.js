@@ -77,9 +77,7 @@ Caray.prototype.forEach = function(callback, thisArg) {
 
 Caray.prototype.filter = function(callback, thisArg) {
     var newArr = new Caray;
-
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
-
     for (var i = 0; i < this.length; i++) {
         if (callback.call(thisArg, this[i], i, this)) {
             newArr[newArr.length] = this[i]
@@ -87,4 +85,18 @@ Caray.prototype.filter = function(callback, thisArg) {
         }
     }
     return newArr;
+}
+
+Caray.prototype.reduce = function(callback, initialValue) {
+    var accumulator = (initialValue === undefined) ? undefined : initialValue;
+    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
+
+    for (var i = 0; i < this.length; i++) {
+        if (accumulator === undefined && i === 0) {
+            accumulator = this[i];
+        } else {
+            accumulator = callback(accumulator, this[i], i, this);
+        }
+    }
+    return accumulator;
 }
