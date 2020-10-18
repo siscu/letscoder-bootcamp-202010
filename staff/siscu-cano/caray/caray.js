@@ -132,3 +132,11 @@ Caray.prototype.concat = function(array) {
     }
     return newArr;
 }
+
+// The find() method returns the value of the first element in the provided array 
+// that satisfies the provided testing function.
+Caray.prototype.find = function(callback, thisArg) {
+    for (var i = 0; i < this.length; i++) {
+        if (callback.call(thisArg, this[i], i, this)) return this[i];
+    }
+}
