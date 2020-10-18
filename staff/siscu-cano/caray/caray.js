@@ -22,6 +22,8 @@ function Caray() {
 
 }
 
+// The push() method adds one or more elements to the end of an array 
+// and returns the new length of the array.
 Caray.prototype.push = function() {
     for (var i = 0; i < arguments.length; i++) {
         this[this.length] = arguments[i];
@@ -29,15 +31,8 @@ Caray.prototype.push = function() {
     }
 }
 
-Caray.prototype.forEach = function(callback) {
-    if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
-
-    for (var index = 0; index < this.length; index++) {
-        var element = this[index];
-        callback(element, index, this);
-    }
-}
-
+// The every() method tests whether all elements in the array pass the test implemented 
+// by the provided function. It returns a Boolean value.
 Caray.prototype.every = function(callback) {
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
 
@@ -47,6 +42,8 @@ Caray.prototype.every = function(callback) {
     return true;
 }
 
+// The map() method creates a new array populated with the results of calling 
+// a provided function on every element in the calling array.
 Caray.prototype.map = function(callback) {
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
 
@@ -56,10 +53,11 @@ Caray.prototype.map = function(callback) {
         result[index] = callback(this[index], index, this);
         result.length++;
     }
-
     return result;
 }
 
+// The some() method tests whether at least one element in the array passes the test implemented 
+// by the provided function. It returns a Boolean value.
 Caray.prototype.some = function(callback, thisArg) {
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
     for (var i = 0; i < this.length; i++) {
@@ -68,6 +66,7 @@ Caray.prototype.some = function(callback, thisArg) {
     return false;
 }
 
+// The forEach() method executes a provided function once for each array element.
 Caray.prototype.forEach = function(callback, thisArg) {
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
     for (var i = 0; i < this.length; i++) {
@@ -75,6 +74,8 @@ Caray.prototype.forEach = function(callback, thisArg) {
     }
 }
 
+// The filter() method creates a new array with all elements 
+// that pass the test implemented by the provided function.
 Caray.prototype.filter = function(callback, thisArg) {
     var newArr = new Caray;
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
@@ -87,6 +88,8 @@ Caray.prototype.filter = function(callback, thisArg) {
     return newArr;
 }
 
+// The reduce() method executes a reducer function (that you provide) 
+// on each element of the array, resulting in single output value.
 Caray.prototype.reduce = function(callback, initialValue) {
     var accumulator = (initialValue === undefined) ? undefined : initialValue;
     if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
@@ -101,6 +104,8 @@ Caray.prototype.reduce = function(callback, initialValue) {
     return accumulator;
 }
 
+// The reverse() method reverses an array in place. 
+// The first array element becomes the last, and the last array element becomes the first.
 Caray.prototype.reverse = function() {
     var aux = "";
     for (var i = 0; i < this.length / 2; i++) {
@@ -109,4 +114,21 @@ Caray.prototype.reverse = function() {
         this[this.length - (i + 1)] = aux;
     }
     return this;
+}
+
+// The concat() method is used to merge two or more arrays. 
+// This method does not change the existing arrays, but instead returns a new array.
+Caray.prototype.concat = function(array) {
+    var newArr = new Caray;
+    if (!(array instanceof Array)) throw new TypeError(array + ' is not an array');
+
+    for (var i = 0; i < this.length; i++) {
+        newArr[i] = this[i];
+        newArr.length++;
+    }
+    for (var i = 0; i < array.length; i++) {
+        newArr[newArr.length] = array[i];
+        newArr.length++;
+    }
+    return newArr;
 }
