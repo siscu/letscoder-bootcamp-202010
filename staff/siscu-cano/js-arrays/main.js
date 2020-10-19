@@ -1,4 +1,6 @@
 const iconSection = String.fromCodePoint(0x1F449);
+const iconTesting = String.fromCodePoint(0x1F9EA);
+const iconOk = String.fromCodePoint(0x2705);
 
 console.clear()
 console.log('%c JavaScript Array Methods', 'font-size: 30px; font-weight: bold; color: #373a40');

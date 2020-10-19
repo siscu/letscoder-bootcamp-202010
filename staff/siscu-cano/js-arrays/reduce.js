@@ -4,7 +4,7 @@ function reduce(arr, expression, initial) {
         if (initial === undefined && i === 0) {
             result = arr[i];
         } else {
-            result = expression(result, arr[i]);
+            result = expression(result, arr[i], i, arr);
         }
     }
     return result;
