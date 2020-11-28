@@ -1,24 +1,28 @@
-const { validateId, validateCallback } = require('./helpers/validations')
-const fs = require('fs')
-const path = require('path')
+const { validateId } = require('./helpers/validations')
+const { NotFoundError } = require('../errors')
+const { User } = require('../models')
 
-module.exports = (userId, callback) => {
+/**
+ * Retrieves a user by its id
+ * 
+ * @param {string} userId 
+ * 
+ * @returns {Promise}
+ */
+module.exports = function (userId) {
     validateId(userId)
-    validateCallback(callback)
 
-    const filePath = path.join(__dirname, `../data/users/${userId}.json`)
+    return User.findById(userId).lean()
+        .then(user => {
+            if (!user) throw new NotFoundError(`user with id ${userId} not found`)
 
-    fs.access(filePath, fs.F_OK, error => {
-        if (error) return callback(new Error(`user with id ${userId} not found`))
+            const { _id } = user
 
-        fs.readFile(filePath, 'utf8', (error, json) => {
-            if (error) return callback(error)
-
-            const user = JSON.parse(json)
-
+            user.id = _id.toString()
+            
+            delete user._id
             delete user.password
 
-            callback(null, user)
+            return user
         })
-    })
 }
